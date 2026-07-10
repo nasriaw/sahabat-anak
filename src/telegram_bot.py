@@ -1,10 +1,11 @@
 import requests
 import streamlit as st
 from datetime import datetime
+import pytz
 
 def send_sos_alert(child_name, status_stress, address, lat, lon):
     """
-    Mengirim notifikasi darurat lengkap dengan waktu masuk laporan dan tautan navigasi
+    Mengirim notifikasi darurat lengkap dengan waktu masuk laporan berbasis zona waktu WIB (Asia/Jakarta)
     """
     TOKEN = st.secrets.get("TELEGRAM_BOT_TOKEN")
     CHAT_ID = st.secrets.get("TELEGRAM_CHAT_ID")
@@ -12,8 +13,10 @@ def send_sos_alert(child_name, status_stress, address, lat, lon):
     if not TOKEN or not CHAT_ID:
         return False, "Kredensial Telegram belum diatur di secrets.toml!"
     
-    # Mengambil jam pelaporan masuk saat ini
-    jam_masuk = datetime.now().strftime("%H:%M:%S WIB")
+    # PERBAIKAN: Mengunci waktu ke Zona Waktu Asia/Jakarta (WIB) meskipun server berada di luar negeri
+    zona_wib = pytz.timezone('Asia/Jakarta')
+    jam_masuk = datetime.now(zona_wib).strftime("%H:%M:%S WIB")
+    
     gmaps_link = f"https://www.google.com/maps?q={lat},{lon}"
     
     message = (
