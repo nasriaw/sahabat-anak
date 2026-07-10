@@ -14,13 +14,22 @@ st.set_page_config(page_title="Sahabat Anak", page_icon="👶", layout="centered
 HOMEBASE_LAT = -7.9502
 HOMEBASE_LON = 112.6096
 
-# 2. GLOBAL STATE INITIALIZATION (Pencegah Bug Konsol Lintas Halaman)
+# 2. GLOBAL STATE INITIALIZATION (Pencegah Bug Konsol & Sinkronisasi Spasial Global)
 if "show_analysis" not in st.session_state:
     st.session_state.show_analysis = False
 if "analysis_data" not in st.session_state:
     st.session_state.analysis_data = {}
+    
+# --- PENGUNCI LOKASI DARURAT AKTIF GLOBAL ---
+if "active_emergency" not in st.session_state:
+    st.session_state.active_emergency = {
+        "lat": -7.9502,
+        "lon": 112.6096,
+        "alamat": "Pusat Komando Utama (Default)",
+        "identitas": "Belum ada laporan aktif"
+    }
+
 if "list_relawan_dinamis" not in st.session_state:
-    # Inisialisasi awal jaringan relawan terdistribusi agar terbaca di semua view
     st.session_state.list_relawan_dinamis = [
         {"nama": "Pos Relawan Klojen", "lat": -7.9502, "lon": 112.6096, "status": "Standby"},
         {"nama": "Pos Relawan Blimbing", "lat": -7.9421, "lon": 112.6410, "status": "Standby"},
