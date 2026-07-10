@@ -98,12 +98,17 @@ def render_admin_dashboard(homebase_lat, homebase_lon):
 
     # Radar Pemantauan Spasial Makro Admin
     st.write("### 🗺️ Radar Pemantauan Spasial Makro Admin")
-    m = folium.Map(location=[homebase_lat, homebase_lon], zoom_start=13)
+    # Ambil lokasi darurat aktif dari state global
+    emergency_lat = st.session_state.active_emergency["lat"]
+    emergency_lon = st.session_state.active_emergency["lon"]
+    emergency_info = st.session_state.active_emergency["identitas"]
     
-    # Plot posisi anak darurat
+    m = folium.Map(location=[emergency_lat, emergency_lon], zoom_start=13)
+    
+    # PERBAIKAN: Plot posisi anak darurat membaca data riil terupdate
     folium.Marker(
-        [-7.95607, 112.62034], 
-        popup="KASUS SOS ACTIVE: Perempuan, 8 Tahun", 
+        [emergency_lat, emergency_lon], 
+        popup=f"KASUS SOS ACTIVE: {emergency_info}", 
         tooltip="Posisi Anak Darurat",
         icon=folium.Icon(color="red", icon="exclamation-sign")
     ).add_to(m)
