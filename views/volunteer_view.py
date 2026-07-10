@@ -36,11 +36,12 @@ def render_volunteer_dashboard(homebase_lat, homebase_lon):
     # Peta taktis berbasis lokasi homebase pusat
     m = folium.Map(location=[homebase_lat, homebase_lon], zoom_start=13)
     
-    # 2. RENDER PIN MERAH KORBAN (Membaca koordinat dari session state korban aktif jika ada)
-    # Untuk simulasi taktis, kita plot posisi kasus darurat aktif yang sedang terjadi
-    korban_lat, korban_lon = -7.95607, 112.62034
+    # 2. RENDER PIN MERAH KORBAN (Membaca koordinat riil dari state global terpusat)
+    emergency_lat = st.session_state.active_emergency["lat"]
+    emergency_lon = st.session_state.active_emergency["lon"]
+    
     folium.Marker(
-        [korban_lat, korban_lon], 
+        [emergency_lat, emergency_lon], 
         popup="🚨 KORBAN DARURAT: Membutuhkan Pendampingan!", 
         tooltip="KORBAN (MERAH)",
         icon=folium.Icon(color="red", icon="exclamation-sign")
