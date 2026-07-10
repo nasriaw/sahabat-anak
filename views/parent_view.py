@@ -61,6 +61,13 @@ def render_parent_dashboard(homebase_lat, homebase_lon):
             "lat": lat, "lon": lon, "alamat": alamat_fisik, "identitas": identitas_label,
             "db_pesan": db_pesan, "tg_sent": tg_sent, "tg_pesan": tg_pesan
         }
+        # Kunci data koordinat riil ke dalam state darurat global agar dibaca Admin & Relawan
+        st.session_state.active_emergency = {
+            "lat": lat,
+            "lon": lon,
+            "alamat": alamat_fisik,
+            "identitas": identitas_label
+        }
         st.session_state.show_analysis = True
 
     # Pengecekan state yang sekarang dijamin aman
