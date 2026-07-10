@@ -1,0 +1,12 @@
+# Mengabaikan Virtual Environment lokal
+.venv/
+__pycache__/
+*.pyc
+
+# Mengabaikan file kredensial rahasia lokal (SANGAT PENTING)
+.streamlit/secrets.toml
+data/firebase_creds.json
+*.json
+
+# Mengabaikan file PDF temporer hasil download
+*.pdf
