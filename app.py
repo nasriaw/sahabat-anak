@@ -45,7 +45,7 @@ if os.path.exists(logo_path):
         st.image(img, width=140)
     with col_title:
         st.markdown("<h1 style='margin-bottom: 0;'>Sahabat Anak</h1>", unsafe_allow_html=True)
-        st.markdown("<h4 style='color: #2E86C1; margin-top: 0;'>Aplikasi Penapisan Stres & Proteksi Spasial Dini pada Anak</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #2E86C1; margin-top: 0;'>Aplikasi Skrining Stres & Proteksi Spasial Dini pada Anak</h4>", unsafe_allow_html=True)
         st.markdown("<i style='color: gray; font-size: 14px;'>\"Mewujudkan Malang Sehat Jiwa melalui perlindungan anak yang responsif, adaptif, dan terintegrasi.\"</i>", unsafe_allow_html=True)
 else:
     st.title("👶 Aplikasi Sahabat Anak")
