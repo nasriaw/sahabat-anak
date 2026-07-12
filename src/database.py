@@ -32,6 +32,10 @@ def save_stress_report(nama_anak, total_skor, level_stres, jawaban):
     """
     try:
         init_firebase()
+        if not firebase_admin._apps:
+            cred = credentials.Certificate(dict(st.secrets["firebase"]))
+            firebase_admin.initialize_app(cred)
+
         db = firestore.client()
         
         zona_wib = pytz.timezone('Asia/Jakarta')
