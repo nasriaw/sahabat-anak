@@ -102,7 +102,7 @@ def render_admin_dashboard(homebase_lat, homebase_lon):
     emergency_lat = st.session_state.active_emergency["lat"]
     emergency_lon = st.session_state.active_emergency["lon"]
     emergency_info = st.session_state.active_emergency["identitas"]
-    
+
     m = folium.Map(location=[emergency_lat, emergency_lon], zoom_start=13)
     
     # PERBAIKAN: Plot posisi anak darurat membaca data riil terupdate
