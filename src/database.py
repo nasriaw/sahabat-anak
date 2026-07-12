@@ -31,7 +31,7 @@ def save_stress_report(nama_anak, total_skor, level_stres, jawaban):
     Menyimpan laporan langsung ke Cloud Firestore.
     """
     try:
-        init_firebase()
+        #init_firebase()
         if not firebase_admin._apps:
             cred = credentials.Certificate(dict(st.secrets["firebase"]))
             firebase_admin.initialize_app(cred)
